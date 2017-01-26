@@ -19,5 +19,11 @@ class Money
     end
   end
 
+  def self.show_conversion_rates
+    @@conversion_rates.each do |currency_base,rates|
+      puts currency_base + ' => ' + rates +'/n----------/n'
+    end
+  end
+
 
 end
