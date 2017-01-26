@@ -67,7 +67,7 @@ twenty_dollars < fifty_eur             # => true
 ```
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/Money_DaWanda/fork )
+1. Fork it ( https://github.com/CesarFerratBourdon/Money_DaWanda/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
