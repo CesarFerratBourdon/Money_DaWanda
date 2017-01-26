@@ -9,6 +9,9 @@ class Money
     @currency = currency
   end
 
+  def inspect
+    "#{'%.2f' % amount} + #{currency}"
+  end
 
 
 end
