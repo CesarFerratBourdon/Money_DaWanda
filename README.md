@@ -1,6 +1,6 @@
 # Money_DaWanda
 
-Money exchange rate gem created as a coding challenge fro DaWanda
+Money exchange rate gem created as a coding challenge for DaWanda
 
 ## Installation
 
