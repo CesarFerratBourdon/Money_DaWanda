@@ -47,6 +47,7 @@ class Money
     return Money.new(new_amount,new_currency)
   end
 
+#Arithmetics
   def +(money)
     if money.currency != @currency && money.amount != 0
       return Money.new(@amount + (money.convert_to(@currency)).amount, @currency)
@@ -71,6 +72,28 @@ class Money
   def /(number)
     raise ArgumentError, 'Number should be a non nil numeric'  unless number.is_a?(Numeric) and number != 0
       return Money.new((@amount / number).round(2), @currency)
+  end
+
+#Comparisons
+  def ==(money)
+    if money.currency != @currency && money.amount != 0
+      money = (money.convert_to(@currency))
+    end
+      return @amount == money.amount
+  end
+
+  def >(money)
+    if money.currency != @currency && money.amount != 0
+      money = (money.convert_to(@currency))
+    end
+      return @amount > money.amount
+  end
+
+  def <(money)
+    if money.currency != @currency && money.amount != 0
+      money = (money.convert_to(@currency))
+    end
+      return @amount < money.amount
   end
 
 
