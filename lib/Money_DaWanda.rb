@@ -75,29 +75,13 @@ class Money
   end
 
 #Comparisons
-  def ==(money)
-    if money.currency != @currency && money.amount != 0
-      money = (money.convert_to(@currency))
+  [:<, :>, :==].each do |comparator|
+    define_method(comparator) do |money|  #metaprogramming way of defining an instance method
+        if money.currency != @currency && money.amount != 0
+          money = (money.convert_to(@currency))
+        end
+      return @amount.send(comparator, money.amount)
     end
-      return @amount == money.amount
   end
-
-  def >(money)
-    if money.currency != @currency && money.amount != 0
-      money = (money.convert_to(@currency))
-    end
-      return @amount > money.amount
-  end
-
-  def <(money)
-    if money.currency != @currency && money.amount != 0
-      money = (money.convert_to(@currency))
-    end
-      return @amount < money.amount
-  end
-
-
-
-
 
 end
