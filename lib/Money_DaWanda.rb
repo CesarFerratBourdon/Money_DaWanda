@@ -13,5 +13,11 @@ class Money
     "#{'%.2f' % amount} + #{currency}"
   end
 
+  def self.add_conversion_rates(currency_base, rates)
+    rates.each do |currency,value|
+      @@conversion_rates[currency_base][currency] = value
+    end
+  end
+
 
 end
