@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Ruby gem to perform currency conversion and arithmetics with different currencies"
   s.authors     = ["Cesar Bourdon"]
   s.email       = 'cesar.bourdon1@gmail.com'
-  s.files       = ["lib/Money_DaWanda.rb"]
+  s.files       = ["lib/Money_DaWanda.rb", "lib/Money_DaWanda/arithmetics.rb", "lib/Money_DaWanda/comparisons.rb"]
   s.homepage    =
     'http://rubygems.org/gems/Money_DaWanda'
   s.license       = 'MIT'
