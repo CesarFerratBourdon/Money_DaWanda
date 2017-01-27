@@ -5,7 +5,7 @@ module Money_DaWanda
     class Money
 
       include Arithmetics
-      include Comparisons 
+      include Comparisons
 
       attr_accessor :amount, :currency
 
