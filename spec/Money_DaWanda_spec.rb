@@ -10,14 +10,15 @@ RSpec.describe Money_DaWanda::Money do
 
       specify 'Wrong amount format is passed' do
         forty_euros = Money_DaWanda::Money.new('a', 'EUR')
-        expect{forty_euros).to raise_error(ArgumentError)
+        expect{forty_euros}.to raise_error(ArgumentError)
       end
 
       specify 'Wrong currency format is passed' do
         sixty_euros = Money_DaWanda::Money.new(60, 60)
-        expect{sixty_euros).to raise_error(ArgumentError)
+        expect{sixty_euros}.to raise_error(ArgumentError)
       end
     end
+    
 
     context 'Conversion to another currency' do
 
@@ -34,7 +35,7 @@ RSpec.describe Money_DaWanda::Money do
         expect(dollar.inspect).to eq '55.50 USD'
       end
 
-      specify 'Wrong currency format is passed to convert_to method' do 
+      specify 'Wrong currency format is passed to convert_to method' do
         forty_euros = Money_DaWanda::Money.new(40, 'EUR')
         expect{forty_euros.convert_to(USD)).to raise_error(ArgumentError)
       end
