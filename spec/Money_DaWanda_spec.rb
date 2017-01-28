@@ -3,19 +3,17 @@ require 'Money_DaWanda'
 RSpec.describe Money_DaWanda::Money do
 
   before :all do
-    Money_DaWanda::Money.conversion_rates('EUR', {'USD' => 1.11, 'Bitcoin' => 0.0047})
+    Money_DaWanda::Money.add_conversion_rates('EUR', {'USD' => 1.11, 'Bitcoin' => 0.0047})
   end
 
     context 'Instantiate an object' do
 
       specify 'Wrong amount format is passed' do
-        forty_euros = Money_DaWanda::Money.new('a', 'EUR')
-        expect(forty_euros).to raise_error(ArgumentError)
+        expect{Money_DaWanda::Money.new('a', 'EUR')}.to raise_error(ArgumentError)
       end
 
       specify 'Wrong currency format is passed' do
-        sixty_euros = Money_DaWanda::Money.new(60, 60)
-        expect(sixty_euros).to raise_error(ArgumentError)
+        expect{Money_DaWanda::Money.new(60, 60)}.to raise_error(ArgumentError)
       end
     end
 
@@ -25,7 +23,7 @@ RSpec.describe Money_DaWanda::Money do
       let(:fifty_euros){Money_DaWanda::Money.new(50,'EUR')}
 
       specify 'Exchange EUR to USD' do
-        dollar = euro.convert_to('USD')
+        dollar = fifty_euros.convert_to('USD')
         expect(dollar.amount).to eq(55.5)
         expect(dollar.currency).to eq('USD')
       end
@@ -37,7 +35,7 @@ RSpec.describe Money_DaWanda::Money do
 
       specify 'Wrong currency format is passed to convert_to method' do
         forty_euros = Money_DaWanda::Money.new(40, 'EUR')
-        expect(forty_euros.convert_to(USD)).to raise_error(ArgumentError)
+        expect{forty_euros.convert_to(40)}.to raise_error(ArgumentError)
       end
 
       specify 'Exchange to same currency' do
@@ -49,12 +47,6 @@ RSpec.describe Money_DaWanda::Money do
         dollar = fifty_euros.convert_to('USD')
         expect(dollar.convert_to('EUR').amount).to eq(fifty_euros.amount)
         expect(dollar.convert_to('EUR').currency).to eq(fifty_euros.currency)
-      end
-
-      specify 'Exchange EUR to USD to Bitcoin' do
-        dollar = fifty_euros.convert_to('USD')
-        expect(dollar.convert_to('Bitcoin').amount).to eq(fifty_euros.convert_to('Bitcoin').amount)
-        expect(dollar.convert_to('Bitcoin').currency).to eq(fifty_euros.convert_to('Bitcoin').currency)
       end
 
     end
